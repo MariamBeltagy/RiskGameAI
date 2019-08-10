@@ -20,23 +20,25 @@ class Agent2:
         if (num == 2):
             self.troops = globals.map.player2Available
             self.enemy = 1
-        min = none
+        min = None
         myter = 0
         i = 0
         if (globals.map == "egypt"):
             while (i < 28):
                 if (ctrl[i] == self.me):
                     myter += 1
-                    if (min > numList[i] or min == none):
+                    if (min > numList[i] or min == None):
                         i_min = i
                         min = numList[i]
+            i+=1
         else:
             while (i < 51):
                 if (ctrl[i] == self.me):
                     myter += 1
-                    if (min > numList[i] or min == none):
+                    if (min > numList[i] or min == None):
                         i_min = i
                         min = numList[i]
+            i+=1
 
         newtroops = int(myter / 3)
         if (newtroops < 3):

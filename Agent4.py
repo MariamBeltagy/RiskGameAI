@@ -21,8 +21,8 @@ class Agent1:
             self.troops = globals.map.player2Available
             self.enemy = 1
 
-        min = none
-        minenemy = none
+        min = None
+        minenemy = None
         myter = 0
         enemy = []
         ally = []
@@ -32,43 +32,46 @@ class Agent1:
                 if (ctrl[i] == self.me):
                     myter += 1
                     ally.append(i)
-                    if (min > numList[i] or min == none):
+                    if (min > numList[i] or min == None):
                         i_min = i
                         min = numList[i]
                 elif (ctrl[i] != 0):
                     enemy.append(i)
-                    if (minenemy > numList[i] or minenemy == none):
+                    if (minenemy > numList[i] or minenemy == None):
                         minenemy = numList[i]
                         minenemyindex = i
+            i+=1
         else:
             while (i < 51):
                 if (ctrl[i] == self.me):
                     myter += 1
                     ally.append(i)
-                    if (min > numList[i] or min == none):
+                    if (min > numList[i] or min == None):
                         i_min = i
                         min = numList[i]
                 elif (ctrl[i] != 0):
                     enemy.append(i)
-                    if (minenemy > numList[i] or minenemy == none):
+                    if (minenemy > numList[i] or minenemy == None):
                         minenemy = numList[i]
                         minenemyindex = i
+            i+=1
+
         newtroops = int(myter / 3)
         if (newtroops < 3):
             newtroops = 3
 
         numList[i_min] += newtroops
         i = ally.__len__()-1
-        attacker = none
+        attacker = None
         while (i >= 0):
             if (adj[minenemyindex].__contains__(ally[i])):
-                if (numList[allay[i]] > numList[minenemyindex]):
-                    if (attacker == none or numList[attacker] < numList[ally[i]]):
+                if (numList[ally[i]] > numList[minenemyindex]):
+                    if (attacker == None or numList[attacker] < numList[ally[i]]):
                         attacker = ally[i]
             i -= 1
 
-        if (attacker != none):
-            if (numList[attacker] > numList[defender]):
+        if (attacker != None):
+            if (numList[attacker] > numList[minenemyindex]):
                 numList[minenemyindex] = numList[attacker] - numList[minenemyindex]
                 ctrl[minenemyindex] = self.me
                 numList[attacker] = 1

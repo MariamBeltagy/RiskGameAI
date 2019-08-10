@@ -22,9 +22,9 @@ class Agent3:
             self.enemy = 1
 
 
-        max = none
+        max = None
         enemy = []
-        maxenemy = none
+        maxenemy = None
         ally = []
         myter = 0
         i = 0
@@ -33,7 +33,7 @@ class Agent3:
                 if (ctrl[i] == self.me):
                     myter += 1
                     ally.append(i)
-                    if (max < numList[i] or max == none):
+                    if (max < numList[i] or max == None):
                         i_max = i
                         max = numList[i]
                 elif (ctrl[i] != 0):
@@ -44,7 +44,7 @@ class Agent3:
                 if (ctrl[i] == self.me):
                     myter += 1
                     ally.append(i)
-                    if (max < numList[i] or max == none):
+                    if (max < numList[i] or max == None):
                         i_max = i
                         max = numList[i]
                 elif (ctrl[i] != 0):
@@ -65,12 +65,12 @@ class Agent3:
                 while (k >= 0):
                     if (ally[k] == adj[enemy[i]][j]):
                         if (numList[ ally[k] ] > 1):
-                            if (maxenemy == none or maxenemy < numList[enemy[i]]):
+                            if (maxenemy == None or maxenemy < numList[enemy[i]]):
                                 maxenemy = numList[enemy[i]]
                                 attacker = ally[k]
                                 defender = enemy[i]
                             elif (maxenemy == numList[enemy[i]]):
-                                if (numList[attacker] < numList[allay[k]]):
+                                if (numList[attacker] < numList[ally[k]]):
                                     attacker = ally[k]
                                     defender = enemy[i]
 
@@ -78,7 +78,7 @@ class Agent3:
 
                 j -= 1
             i -= 1
-        if (maxenemy != none):
+        if (maxenemy != None):
             if (numList[attacker] > numList[defender]):
                 numList[defender] = numList[attacker] - numList[defender]
                 ctrl[defender] = self.me
