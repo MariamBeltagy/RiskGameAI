@@ -1,14 +1,15 @@
 import globals
-from tkinter import *
+
+
 class Agent4:
     def __init__(self):
         self.map = globals.map
         self.attacks = 0
         self.troops = 0
-        self.enemy =0
+        self.enemy = 0
         self.me = 0
 
-    def move(self , num , infoText , listL):
+    def move(self, num, infoText, listL):
         adj = globals.map.adjacency
         ctrl = globals.map.control
         numList = globals.map.troopNum
@@ -27,8 +28,8 @@ class Agent4:
         for num in numList:
             if num < mminTroops and ctrl[i] != self.enemy and i != 0:
                 minCity = i
-                mminTroops=num
-            i=i+1
+                mminTroops = num
+            i = i + 1
 
         ctrl[minCity] = self.me
         numList[minCity] = numList[minCity] + self.troops
@@ -47,14 +48,13 @@ class Agent4:
             if ctrl[i] == self.me and i != 0:
                 for adjs in city:
 
-                    if numList[i] > numList[adjs] and minEnemyArmy > numList[adjs] and ctrl[adjs] != self.me and numList[i] > 1:
-
+                    if numList[i] > numList[adjs] and minEnemyArmy > numList[adjs] and ctrl[adjs] != self.me and \
+                            numList[i] > 1:
                         attack = i
                         attacked = adjs
                         minEnemyArmy = numList[adjs]
 
             i = i + 1
-
 
         if (attack != 0 and attacked != 0 and numList[attack] > 1):
             numList[attacked] = numList[attack] - 1
